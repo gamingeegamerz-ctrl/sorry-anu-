@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Anu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  background:linear-gradient(145deg,#0f1020,#1b1d3a);
+  color:#f5f6fa;
+  font-family:'Inter',sans-serif;
+  overflow:hidden; /* opening ke liye */
+}
+
+/* Hearts */
+.heart{
+  position:fixed;
+  width:14px;height:14px;
+  background:linear-gradient(135deg,#ff5f7e,#ff89a0);
+  transform:rotate(45deg);
+  animation:floatUp linear infinite;
+  opacity:.6;
+}
+.heart:before,.heart:after{
+  content:"";position:absolute;width:14px;height:14px;
+  background:inherit;border-radius:50%;
+}
+.heart:before{top:-7px;left:0}
+.heart:after{left:-7px;top:0}
+
+@keyframes floatUp{
+  from{transform:translateY(110vh) rotate(45deg);opacity:0}
+  to{transform:translateY(-120vh) rotate(45deg);opacity:.7}
+}
+
+/* Screens */
+.screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity 1s,transform 1s;
+}
+
+.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(1.05);
+}
+
+/* Opening */
+.opening{
+  flex-direction:column;
+  text-align:center;
+}
+
+.opening h1{
+  font-size:32px;
+  font-weight:600;
+  margin-bottom:14px;
+}
+
+.opening p{
+  opacity:.85;
+  font-size:15px;
+}
+
+.open-btn{
+  margin-top:30px;
+  padding:14px 34px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff5f7e,#ff89a0);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 15px 40px rgba(255,95,126,.5);
+  transition:.3s;
+}
+.open-btn:hover{transform:scale(1.06)}
+
+/* Letter screen with scroll */
+.letter{
+  align-items:flex-start;
+  overflow-y:auto;     /* ✅ scroll enable */
+  padding:40px 0;
+}
+
+.card{
+  margin:0 auto;
+  max-width:820px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(22px);
+  border-radius:28px;
+  padding:42px 36px;
+  box-shadow:0 40px 80px rgba(0,0,0,.55);
+  animation:letterIn 1.2s ease forwards;
+}
+
+@keyframes letterIn{
+  from{opacity:0;transform:translateY(60px) rotateX(18deg)}
+  to{opacity:1;transform:none}
+}
+
+.card h2{
+  text-align:center;
+  margin-bottom:24px;
+  font-size:26px;
+}
+.card h2 span{
+  background:linear-gradient(135deg,#ff5f7e,#ffb3c1);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.text{
+  font-family:'Noto Serif Devanagari',serif;
+  line-height:1.9;
+  font-size:16px;
+  white-space:pre-line;
+}
+
+.signature{
+  margin-top:32px;
+  text-align:right;
+  opacity:.9;
+}
+
+@media(max-width:600px){
+  .card{padding:30px 22px}
+  .text{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<script>
+for(let i=0;i<24;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=6+Math.random()*6+"s";
+  h.style.animationDelay=Math.random()*5+"s";
+  document.body.appendChild(h);
+}
+
+function openLetter(){
+  document.getElementById("opening").classList.add("hidden");
+  const letter=document.getElementById("letter");
+  letter.classList.remove("hidden");
+  document.body.style.overflow="hidden"; // background fixed
+}
+</script>
+
+<!-- OPENING -->
+<div class="screen opening" id="opening">
+  <div>
+    <h1>Dear Anu</h1>
+    <p>Ek chhoti si baat, jo dil se likhi hai.</p>
+    <button class="open-btn" onclick="openLetter()">Open</button>
+  </div>
+</div>
+
+<!-- LETTER -->
+<div class="screen letter hidden" id="letter">
+  <div class="card">
+    <h2>Dear <span>Anu</span></h2>
+
+    <div class="text">
+माझ्या मनात जे आहे ते शब्दांत मांडणं मला खरंच खूप अवघड जातं. गुलाबाच्या फुलासारखं काहीतरी सुंदर सांगावंसं वाटतं, पण भावना शब्दांपेक्षा मोठ्या वाटतात.
+
+खरं सांगायचं तर, तू मला 7th पासून आवडतेस. 8th मध्ये तुला पाहिल्यावर वाटलं की तुझ्याशी बोलावं, तुझा मित्र व्हावं. पण 8th नंतर काही महिन्यांत आपलं बोलणं बंद झालं आणि 10th मध्येही तसंच राहिलं.
+
+तुझ्याशी बोलण्यासाठी मी खूप वेळा प्रयत्न केला, धाडस जमवलं, पण कधी जमलंच नाही. खूप दिवस हे मनात ठेवून दिलं होतं, पण आज सांगावंसं वाटलं.
+
+मी तुला कोणताही proposal देत नाही. मला फक्त इतकंच विचारायचं आहे की तू माझी friend बनू शकशील का? फक्त friend, त्यापेक्षा काहीही नाही.
+
+तुला माहित आहे का, तुझ्यासाठी मी कधीही इतर मुलींना proposal घातला नाही. कारण मला आयुष्यात फक्त एकच अशी female friend हवी आहे, जिन्यावर मी विश्वास ठेवू शकेन. आणि मी तुला promise करतो की तुला सोडून मी कोणत्याही मुलीशी तसंच बोलणार नाही.
+
+मला माहित आहे की मी अभ्यासात फार हुशार नव्हतो, पण आयुष्यात खूप काही शिकलो आहे. आज माझे mummy-papa मला पाहून proud feel करतात, आणि ते माझ्यासाठी खूप मोठं आहे.
+
+आज मी जिथे आहे, तिथे असण्यामागे कुठेतरी तू आहेस. एवढंच सांगायचं होतं.
+
+mala bus yavdch sangych ahe ki mala tuza man nahi dukhvay ch ahe mala fkt tula haravach nahi ane mala fkt tuchlach best friend mhun life time thvach ahe ....
+    </div>
+
+    <div class="signature">तुझाच,</div>
+  </div>
+</div>
+
+</body>
+</html>
